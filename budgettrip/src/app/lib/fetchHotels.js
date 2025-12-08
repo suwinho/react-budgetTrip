@@ -61,6 +61,8 @@ export const fetchHotelsFromAPI = async (city) => {
       return {
         location_id: prop.id,
         name: prop.name,
+        latitude: prop.latitude,
+        longitude: prop.longitude,
         rating: prop.reviewScore || "N/A",
         num_reviews: prop.reviewCount || 0,
         price: prop.priceBreakdown?.grossPrice?.value

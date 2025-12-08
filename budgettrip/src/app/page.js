@@ -30,25 +30,9 @@ export default function Home() {
       </div>
 
       {loading && (
-        <p style={{ textAlign: "center", fontSize: "1.2rem", color: "blue" }}>
-          ⏳ Pobieranie ofert z Booking.com...
-        </p>
+        <p style={{ textAlign: "center", color: "blue" }}>⏳ Pobieranie...</p>
       )}
-
-      {error && (
-        <div
-          style={{
-            textAlign: "center",
-            color: "red",
-            border: "1px solid red",
-            padding: 10,
-            maxWidth: 600,
-            margin: "20px auto",
-          }}
-        >
-          <strong>Błąd:</strong> {error}
-        </div>
-      )}
+      {error && <p style={{ textAlign: "center", color: "red" }}>{error}</p>}
 
       {!loading && hotels.length > 0 && (
         <p style={{ textAlign: "center", color: "green" }}>

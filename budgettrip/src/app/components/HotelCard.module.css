@@ -78,16 +78,33 @@
   color: #333;
 }
 
-.fakeButton {
+.planButton {
+  padding: 5px 15px;
   background-color: #00aa6c;
   color: white;
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  transition: background-color 0.2s;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
 }
 
-.card:hover .fakeButton {
+.planButton:hover {
+  background-color: #008f5a;
+}
+
+.fakeButton {
+  padding: 5px 15px;
+  background-color: #00aa6c;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.fakeButton:hover {
   background-color: #008f5a;
 }
