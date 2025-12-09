@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { HotelProvider } from "@/app/context/HotelContext";
 import "./globals.css";
 import Link from "next/link";
 
@@ -27,7 +28,7 @@ export default function RootLayout({ children }) {
           </h1>
           <Link href={"/"}>Main paige</Link>
         </nav>
-        {children}
+        <HotelProvider>{children}</HotelProvider>
       </body>
     </html>
   );
