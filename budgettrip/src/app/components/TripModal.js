@@ -2,12 +2,14 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { fetchAttractions } from "@/app/lib/fetchAttractions";
-import styles from "./TripModal.module.css"; // Import stylów
+import { useHotelContext } from "@/app/context/HotelContext";
+import styles from "./TripModal.module.css";
 
 export default function TripModal({ hotel, onClose }) {
   const [attractions, setAttractions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const { startTripPlanning } = useHotelContext();
 
   useEffect(() => {
     setMounted(true);
@@ -83,6 +85,30 @@ export default function TripModal({ hotel, onClose }) {
             ) : (
               <p>Nie znaleziono atrakcji w pobliżu.</p>
             )}
+          </div>
+          <div
+            style={{
+              marginTop: "auto",
+              paddingTop: "20px",
+              borderTop: "1px solid #eee",
+              textAlign: "center",
+            }}
+          >
+            <button
+              onClick={() => startTripPlanning(hotel, attractions)}
+              style={{
+                backgroundColor: "#003580",
+                color: "white",
+                padding: "12px 24px",
+                fontSize: "1rem",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+                fontWeight: "bold",
+              }}
+            >
+              ✏️ Edytuj i Zapisz Wycieczkę &rarr;
+            </button>
           </div>
         </div>
       </div>

@@ -3,6 +3,9 @@ export const ACTIONS = {
   SET_ERROR: "SET_ERROR",
   LOAD_SUCCESS: "LOAD_SUCCESS",
   LOAD_FROM_CACHE: "LOAD_FROM_CACHE",
+  SET_CURRENT_TRIP: "SET_CURRENT_TRIP",
+  REMOVE_ATTRACTION: "REMOVE_ATTRACTION",
+  ADD_ATTRACTION: "ADD_ATTRACTION",
 };
 
 export const initialState = {
@@ -10,6 +13,7 @@ export const initialState = {
   cache: {},
   loading: false,
   error: null,
+  currentTrip: null,
 };
 
 export function hotelReducer(state, action) {
@@ -48,6 +52,42 @@ export function hotelReducer(state, action) {
       hotels: state.cache[action.payload],
     };
   }
+
+  if (action.type === ACTIONS.SET_CURRENT_TRIP) {
+    return {
+      ...state,
+      currentTrip: {
+        hotel: action.payload.hotel,
+        attractions: action.payload.attractions,
+      },
+    };
+  }
+
+  if (action.type === ACTIONS.REMOVE_ATTRACTION) {
+    if (!state.currentTrip) return state;
+    return {
+      ...state,
+      currentTrip: {
+        ...state.currentTrip,
+        attractions: state.currentTrip.attractions.filter(
+          (_, index) => index !== action.payload
+        ),
+      },
+    };
+  }
+
+  if (action.type === ACTIONS.ADD_ATTRACTION) {
+    if (!state.currentTrip) return state;
+    return {
+      ...state,
+      currentTrip: {
+        ...state.currentTrip,
+        attractions: [action.payload, ...state.currentTrip.attractions],
+      },
+    };
+  }
+
+  return state;
 
   return state;
 }
