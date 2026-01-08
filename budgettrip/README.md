@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Budget Trip Planner
 
-## Getting Started
+A dynamic web application designed to help travelers plan their trips efficiently while sticking to a budget, built with the React library.
 
-First, run the development server:
+## 📋 Project Description
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This application assists users in finding travel destinations, checking flight/hotel prices, and managing travel expenses. By integrating with external APIs via RapidAPI, it provides real-time data to facilitate smart travel decisions. The project focuses on a responsive user interface and seamless data fetching using modern JavaScript techniques.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Destination Search:**
+  - Search for cities and travel spots.
+  - View details about locations.
+- **Budget Management:**
+  - Estimate trip costs.
+  - Track expenses against a defined budget.
+- **API Integration:**
+  - Fetch live travel data (hotels, attractions, weather).
+  - Powered by RapidAPI.
+- **Interactive UI:**
+  - Responsive design for mobile and desktop.
+  - Dynamic maps and lists.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Tech Stack
 
-## Learn More
+The project utilizes the following technologies:
 
-To learn more about Next.js, take a look at the following resources:
+- **React.js** - Frontend library for building user interfaces.
+- **JavaScript (ES6+)** - Core logic and API handling.
+- **HTML5 / CSS3** - Styling and layout.
+- **RapidAPI** - External API service for travel data.
+- **npm** - Package manager.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ⚙️ Prerequisites
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To run this application locally, you will need:
 
-## Deploy on Vercel
+- Node.js (v14 or higher).
+- npm (Node Package Manager).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ▶️ How to Run
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1.  **Clone the repository:**
+
+    ```bash
+    git clone [https://github.com/suwinho/react-budgetTrip.git](https://github.com/suwinho/react-budgetTrip.git)
+    ```
+
+2.  **Navigate to the project directory:**
+
+    ```bash
+    cd react-budgetTrip
+    ```
+
+3.  **Install dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+4.  **Configuration (API Key):**
+    To fetch data correctly, you need to configure the API key. Create a `.env` file in the root directory or update your configuration file with the following key:
+
+    ```text
+    RAPIDAPI_KEY = "7381ac88d4msh4165fb5e93bd154p1b7665jsn886f49acf67f"
+    ```
+
+5.  **Run the application:**
+
+    ```bash
+    npm start
+    ```
+
+6.  **Access the application:**
+    Open your browser and go to: `http://localhost:3000`
+
+## 🤝 Author
+
+**suwinho** - [GitHub Profile](https://github.com/suwinho)
