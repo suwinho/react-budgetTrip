@@ -1,12 +1,20 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useHotelContext } from "@/app/context/HotelContext";
 import ReviewForm from "@/app/components/ReviewForm";
 import styles from "./style.module.css";
 
 export default function TripEditorPage() {
-  const { currentTrip, removeAttraction, addAttraction } = useHotelContext();
+  const {
+    currentTrip,
+    removeAttraction,
+    addAttraction,
+    saveCurrentTripToHistory,
+  } = useHotelContext();
+  const router = useRouter();
+
   const [newAttr, setNewAttr] = useState("");
   const [reviews, setReviews] = useState([
     {
@@ -33,6 +41,9 @@ export default function TripEditorPage() {
     return (
       <div className={styles.noData}>
         <h2>Brak danych wycieczki.</h2>
+        <button onClick={() => router.push("/")} className={styles.backButton}>
+          Wróć do wyszukiwania
+        </button>
       </div>
     );
   }
@@ -47,6 +58,12 @@ export default function TripEditorPage() {
       photo: "https://via.placeholder.com/100?text=Moja",
     });
     setNewAttr("");
+  };
+
+  const handleSaveAndExit = () => {
+    saveCurrentTripToHistory();
+    alert("Twoja wycieczka została zapisana!");
+    router.push("/my-trips");
   };
 
   return (
@@ -107,6 +124,7 @@ export default function TripEditorPage() {
           Twoja lista jest pusta. Dodaj coś!
         </p>
       )}
+
       <hr className={styles.divider} />
 
       <div className={styles.reviewsContainer}>
@@ -132,6 +150,12 @@ export default function TripEditorPage() {
             ))
           )}
         </div>
+      </div>
+
+      <div className={styles.saveContainer}>
+        <button onClick={handleSaveAndExit} className={styles.saveButton}>
+          💾 Zapisz Wycieczkę i Wróć do Listy
+        </button>
       </div>
     </main>
   );

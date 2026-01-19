@@ -101,3 +101,47 @@
   text-align: center;
   color: #888;
 }
+
+.backButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+
+.backButton:hover {
+  background-color: #e0e0e0;
+}
+
+.saveContainer {
+  margin-top: 60px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #eee;
+  padding-top: 30px;
+}
+
+.saveButton {
+  background-color: #003580;
+  color: white;
+  padding: 16px 32px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 53, 128, 0.2);
+  transition:
+    transform 0.2s,
+    background-color 0.2s;
+}
+
+.saveButton:hover {
+  transform: scale(1.02);
+  background-color: #002a66;
+}
