@@ -9,7 +9,7 @@ import {
 } from "react";
 import { useRouter } from "next/navigation";
 import { hotelReducer, initialState } from "./HotelReducer";
-import { ACTIONS } from "./actionTypes";
+import { ACTIONS } from "./HotelReducer";
 import { fetchHotelsFromAPI } from "@/app/lib/fetchHotels";
 
 const HotelContext = createContext();
@@ -65,7 +65,7 @@ export const HotelProvider = ({ children }) => {
         dispatch({ type: ACTIONS.SET_ERROR, payload: err.message });
       }
     },
-    [state.cache]
+    [state.cache],
   );
 
   const startTripPlanning = (hotel, attractions) => {

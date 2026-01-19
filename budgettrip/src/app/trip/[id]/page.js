@@ -2,11 +2,32 @@
 
 import { useState } from "react";
 import { useHotelContext } from "@/app/context/HotelContext";
+import ReviewForm from "@/app/components/ReviewForm";
 import styles from "./style.module.css";
 
 export default function TripEditorPage() {
   const { currentTrip, removeAttraction, addAttraction } = useHotelContext();
   const [newAttr, setNewAttr] = useState("");
+  const [reviews, setReviews] = useState([
+    {
+      id: 1,
+      username: "Jan Kowalski",
+      rating: "5",
+      comment: "Świetny plan wycieczki! Wszystko dopięte na ostatni guzik.",
+      date: new Date().toLocaleDateString(),
+    },
+  ]);
+
+  const handleReviewSubmit = (reviewData) => {
+    const newReview = {
+      ...reviewData,
+      id: Date.now(),
+      date: new Date().toLocaleDateString(),
+    };
+    setReviews((prevReviews) => [newReview, ...prevReviews]);
+  };
+
+  const renderStars = (count) => "★".repeat(count) + "☆".repeat(5 - count);
 
   if (!currentTrip) {
     return (
@@ -86,6 +107,32 @@ export default function TripEditorPage() {
           Twoja lista jest pusta. Dodaj coś!
         </p>
       )}
+      <hr className={styles.divider} />
+
+      <div className={styles.reviewsContainer}>
+        <ReviewForm onReviewSubmit={handleReviewSubmit} />
+
+        <div className={styles.reviewsList}>
+          <h3>Opinie użytkowników ({reviews.length})</h3>
+
+          {reviews.length === 0 ? (
+            <p className={styles.noReviews}>Brak opinii. Bądź pierwszy!</p>
+          ) : (
+            reviews.map((review) => (
+              <div key={review.id} className={styles.reviewCard}>
+                <div className={styles.reviewHeader}>
+                  <span className={styles.reviewUser}>{review.username}</span>
+                  <span className={styles.reviewDate}>{review.date}</span>
+                </div>
+                <div className={styles.reviewStars}>
+                  {renderStars(Number(review.rating))}
+                </div>
+                <p className={styles.reviewComment}>{review.comment}</p>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
     </main>
   );
 }
